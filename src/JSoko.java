@@ -12,7 +12,7 @@ public class JSoko {
         //PlateauIA p3 = new PlateauIA("./lvl4.sok",9,9); //Best 1 0.1  1 50
         //PlateauIA p3 = new PlateauIA("./lvl5.sok",11,11); //Best 1 0.1  1 50
 
-        final int lvl = 107;
+        final int lvl = 104;
         PlateauIA p3 = new PlateauIA("./src/niveaux/lvl"+Integer.toString(lvl)+".sok");
 
 
