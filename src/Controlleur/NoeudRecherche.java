@@ -1,8 +1,8 @@
 package Controlleur;
 
-import java.util.ArrayList;
-
 import Modèle.PlateauIA;
+
+import java.util.ArrayList;
 
 public class NoeudRecherche implements Comparable<NoeudRecherche> {
     public int nbCoups;
@@ -39,9 +39,11 @@ public class NoeudRecherche implements Comparable<NoeudRecherche> {
     @Override
     public int compareTo(NoeudRecherche n) {
         if ((coefEval*this.eval+coefCoups*this.nbCoups) < (coefEval*n.eval+coefCoups*n.nbCoups))
-            return 0;
-        else
+            return -1;
+        else if ((coefEval*this.eval+coefCoups*this.nbCoups) > (coefEval*n.eval+coefCoups*n.nbCoups))
             return 1;
+        else
+            return 0;
     }
 
     public static void setCoefs(double ce, double cc){

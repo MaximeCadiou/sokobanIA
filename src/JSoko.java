@@ -6,13 +6,8 @@ import Modèle.PlateauIA;
 public class JSoko {
 
     public static void main(String[] args){
-        //Format Plateau(nom_fichier, hauteur, largeur, poids_caisses, poids_joueur)
-        //PlateauIA p1 = new PlateauIA("./plateau1_8_21.txt",8,21);
-        //PlateauIA p2 = new PlateauIA("./plateau2_7_6.txt",7,6);
-        //PlateauIA p3 = new PlateauIA("./lvl4.sok",9,9); //Best 1 0.1  1 50
-        //PlateauIA p3 = new PlateauIA("./lvl5.sok",11,11); //Best 1 0.1  1 50
 
-        final int lvl = 107;
+        final int lvl = 45;
         PlateauIA p1 = new PlateauIA("./src/niveaux/lvl"+Integer.toString(lvl)+".sok");
 
 
@@ -20,28 +15,18 @@ public class JSoko {
         NoeudRecherche.setCoefs(1, 1);
 
         //Coeff Caisses puis Coeff Joueur
-        PlateauIA.setCoeffs(1, 1); //Si ces coefficients sont <=1, on obtient une solution optimale
+        PlateauIA.setCoeffs(1, 1);
 
         Joueur j = new Joueur(true,p1);
 
-
-        //Lvl 1 assez particulier solution optimale le joueur reste coll� aux caisses donc on trouve plus vite la soluton avec coeff dist J = 0
-        //Lvl 2 si on laisse comme �a stack overflow, solution �vidente ( 1 / 2 ) puis (1/50)
-        //Lvl 3 distance tr�s petites donc eval pas importante // coups, on baisse le coeff coups R(1/1) puis R(1/0.1)
-        //Lvl 4 pas r�ussi � la r�soudre
-        //Lvl 5 carte assez petite 1/1/1/1 passe mais si on diminue importance coups, on r�duit la oritente tr�s vite la recherche
-        //M�me choses levels suivants
-
-
-
         try{
-            j.Astar(100000);
+            j.Astar(10000);
             j.afficherSolution();
 
         }
         catch(Error e){
             System.err.println(e);
-            System.out.println(j.getIterations());
+            System.out.println("        Nb itérations : " + j.getIterations());
         }
 
 

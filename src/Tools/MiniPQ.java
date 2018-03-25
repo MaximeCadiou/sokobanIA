@@ -95,6 +95,8 @@ public class MiniPQ<Key> implements Iterable<Key> {
      *         <tt>false</tt> otherwise
      */
     public boolean isEmpty() {
+
+        System.out.println("Pile vide " + N);
         return N == 0;
     }
 

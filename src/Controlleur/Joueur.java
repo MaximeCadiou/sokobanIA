@@ -32,12 +32,13 @@ public class Joueur {
     public void Astar(int nbIter){
         //System.out.println(this.filePriorite.size());
         NoeudRecherche s = this.filePriorite.delMin();
-        System.out.println("   EVAL :"+s.getPlateau().evaluation());
+        System.out.println("   EVAL = heuristique :"+s.getPlateau().evaluation());
         s.getPlateau().afficher();
 
         if (!s.plateau.partieFinie()) {
             for (PlateauIA son : s.plateau.voisins()){
                 if(!NoeudRecherche.hashes.contains(son.getHash())){
+
                     NoeudRecherche nr = new NoeudRecherche(s, son);
                     if(nr.eval < 10000){
                         this.filePriorite.insert(nr);
@@ -61,19 +62,14 @@ public class Joueur {
     public void afficherSolution(){
         System.out.println("\nSOLUTION");
         System.out.println("\nNombre de coups : "+nbCoups);
-        System.out.println("Nombre d'it�ration de A* : "+nbIterations);
+        System.out.println("Nombre d'itération de A* : "+nbIterations);
         for(int i = solution.size()-1; i>=0 ; i--){
             PlateauIA p = solution.get(i);
             p.afficher();
-			/*try {
-				System.in.read();
-				//Thread.sleep(1000);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}*/
+
         }
         System.out.println("\nNombre de coups : "+nbCoups);
-        System.out.println("Nombre d'it�ration de A* : "+nbIterations);
+        System.out.println("Nombre d'itération de A* : "+nbIterations);
     }
 
     public int getIterations(){
